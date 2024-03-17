@@ -19,7 +19,7 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 st.dataframe(data=my_dataframe, use_container_width=True)
-st.stop()
+#st.stop()
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients: '
@@ -27,8 +27,8 @@ ingredients_list = st.multiselect(
     ,max_selections=5)
 
 if ingredients_list:
-   
     ingredients_string =''
+    
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
         st.subheader(fruit_chosen + ' Nutrition Information')
